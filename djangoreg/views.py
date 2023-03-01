@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
-#from django.contrib.auth.forms import UserCreationForm
-#from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 from .models import Student
 
 
 def index_page(request):
-    return render(request, 'index.html')
+    data = Student.objects.all()
+    context = {'data': data}
+    return render(request, 'index.html', context)
 
 def edit_page(request):
     return render(request, 'edit.html')
@@ -22,10 +24,12 @@ def InsertData(request):
         email = request.POST.get('email')
         age = request.POST.get('age')
         gender = request.POST.get('gender')
+        phone = request.POST.get('phone')
 
-        query = Student(name=name, email=email, age=age, gender=gender)
+        query = Student(name=name, email=email, age=age, gender=gender, phone=phone)
         query.save()
+        return redirect("/")
 
-        return render(request, 'index.html')
+    return render(request, "index.html")
 
 
