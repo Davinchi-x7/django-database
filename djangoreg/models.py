@@ -7,7 +7,8 @@ class Student(models.Model):
     email = models.EmailField(max_length=50, blank=True, null=False)
     age = models.IntegerField(max_length=50, blank=True, null=False)
     gender = models.CharField(max_length=50, blank=True, null=False)
-    phone = models.CharField(max_length=50, blank=True, null=False, default=False)
+    phone = models.IntegerField(max_length=10, blank=True, null=False)
+    city = models.CharField(max_length=10, blank=True, null=False)
 
 
 def __str__(self):
