@@ -26,8 +26,9 @@ def InsertData(request):
         gender = request.POST.get('gender')
         phone = request.POST.get('phone')
         city = request.POST.get('city')
+        country = request.POST.get('country')
 
-        query = Student(name=name, email=email, age=age, gender=gender, phone=phone, city=city)
+        query = Student(name=name, email=email, age=age, gender=gender, phone=phone, city=city, country=country)
         query.save()
         return redirect("/")
 
